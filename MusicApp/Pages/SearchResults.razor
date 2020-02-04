@@ -1,0 +1,45 @@
+﻿@page "/searchResults"
+@inject HttpClient Http
+@using Models
+@using MusicApp.Components
+
+@if (Albums == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <CascadingValue Value="this">
+        <SearchComponent />
+    </CascadingValue>
+
+    <div class="columns is-multiline">
+        @foreach (var album in Albums)
+        {
+           <AlbumCard Album="@album" Selected="false" />
+        }
+    </div>
+}
+
+@code {
+    public Album[] Albums { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetAlbums();
+    }
+
+    public async void GetAlbums()
+    {
+        Console.WriteLine("I am getting Albums fresh!");
+        Albums = await Http.GetJsonAsync<Album[]>("sample-data/albums.json");
+        StateHasChanged();
+    }
+
+    public void AlbumsChanged(Album[] albums)
+    {
+        Albums = albums;
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,39 @@
+﻿@using Models
+
+<div class="column is-half">
+    <div class="box @SelectedCss" @onmouseover="Select" @onmouseout="Deselect">
+        <div class="columns">
+            <div class="column">
+                <figure class="image is-square">
+                    <img src="/img/@(album.Id).png" alt="@album.Title" />
+                </figure>
+            </div>
+            <div class="column">
+                <h2 class="title">@album.Title</h2>
+                <h3 class="subtitle">@album.Artist</h3>
+                <div>
+                    Category: @album.Category
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Album album { get; set; }
+    [Parameter] public bool Selected { get; set; } = false;
+    string SelectedCss => Selected ? "album--selected" : String.Empty;
+
+    private Modal modalRef;
+
+    private void Select()
+    {
+        this.Selected = true;
+        Console.WriteLine($"Selected: {this.Selected}");
+    }
+    private void Deselect()
+    {
+        this.Selected = false;
+        Console.WriteLine($"DeSelected: {this.Selected}");
+    }
+}

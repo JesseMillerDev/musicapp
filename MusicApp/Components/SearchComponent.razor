@@ -1,0 +1,19 @@
+﻿@inherits SearchComponentBase
+
+<div class="columns">
+    <div class="column">
+        <div class="columns">
+            <div class="column">
+                <input type="text" class="input is-medium" placeholder="Enter search query..." @bind="@this.SearchQuery" @onkeyup="@KeyUp" />
+            </div>
+            <div class="column is-narrow">
+                <button id="Search" class="button is-primary is-medium" type="button" @onclick="@SearchClick">Search</button>&nbsp;
+                <button id="Clear" class="button is-warning is-medium" type="button" @onclick="@ClearClick">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+   
+}

@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MusicApp/bin
+/MusicApp/obj
+/MusicApp/Properties
+/MusicApp.Test/bin/Debug/netcoreapp3.1
+/MusicApp.Test/obj
